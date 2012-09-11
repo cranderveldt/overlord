@@ -1,0 +1,92 @@
+!!! 5
+html(lang="en")
+  head
+    link(rel="stylesheet",type="text/css",href="lib/weltmeister/weltmeister.css")
+
+    script(src="lib/weltmeister/jquery-1.7.1.min.js", type="text/javascript", charset="utf-8")
+    script(src="lib/weltmeister/jquery-ui-1.8.1.custom.min.js", type="text/javascript", charset="utf-8")
+    <script src="lib/impact/impact.js" type="text/javascript" charset="utf-8"></script>
+    script(src="lib/impact/impact.js", type="text/javascript", charset="utf-8")
+    script(src="lib/weltmeister/weltmeister.js", type="text/javascript", charset="utf-8")
+body
+  #headerMenu
+    span.headerTitle
+    span.unsavedTitle
+    span.headerFloat
+      input#levelSave.button(type="button", value="Save")
+      input#levelSaveAs.button(type="button", value="Save As")
+      input#levelNew.button(type="button", value="New")
+      input#levelLoad.button(type="button", value="Load")
+      input#reloadImages.button(type="button", value="Reload Images", title="Reload Images")
+      input#toggleSidebar.button(type="button", value="Toggle Sidebar", title="Toggle Sidebar")
+  #editor
+    #entityMenu
+    canvas(id="canvas")
+
+    #menu
+      #layerContainer
+        h2 Layers
+        #layerButtons
+          #buttonAddLayer.button(title="Add Layer") +
+        #layers
+          #layerEntities.layer
+            span.visible.specialVis.checkedVis(title="Toggle Visibility (Shift+0)")
+            span.name entities
+
+      #layerSettings
+        h2 Layer Settings
+        dl
+          dt Name:
+          dd
+            input#layerName.text(type="text")
+          dt Tileset:
+          dd
+            input#layerTileset.text(type="text")
+          dt Tilesize:
+          dd
+            input#layerTilesize.number(type="text")
+          dt Dimensions:
+          dd
+            input#layerWidth.number(type="text")
+            | &times;
+            input#layerHeight.number(type="text")
+          dt Distance:
+          dd
+            input#layerDistance.number(type="text")
+          dd
+            input#layerIsCollision(type="checkbox")
+            label(for="layerIsCollision") Is Collision Layer
+          dd
+            input#layerPreRender(type="checkbox")
+            label(for="layerPreRender") Pre-Render in Game
+          dd
+            input#layerRepeat(type="checkbox")
+            label(for="layerRepeat") Repeat
+          dd
+            input#layerLinkWithCollision(type="checkbox")
+            label(for="layerLinkWithCollision") Link with Collision
+          dd
+            input#buttonSaveLayerSettings.button(type="button", value="Apply Changes")
+            input#buttonRemoveLayer.button(type="button", value="Delete")
+
+      #entitySettings
+        h2 Entity Settings
+        h3#entityClass EntityClassName
+        #entityDefinitions
+          .entityDefinition
+            span.key x
+            | :
+            span.value 188
+          .entityDefinition
+            span.key y
+            | :
+            span.value 269
+        dl#entityDefinitionInput
+          dt Key:
+          dd
+            input#entityKey.text(type="text")
+          dt Value:
+          dd
+            input.entityValue.text(type="text")
+
+    #zoomIndicator 1x

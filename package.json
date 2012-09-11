@@ -1,0 +1,17 @@
+{
+  "name":"platformer",
+  "version":"0.0.1",
+  "description": "My first platformer",
+  "homepage": "",
+  "author": "Keith Weiss",
+  "engines": {
+      "node": "0.8.2"
+    , "npm" : "1.1.36"
+  },
+  "dependencies": {
+     "connect": "1.8.5"
+    ,"express": "3.0.0rc4"
+    ,"socket.io": "0.6.16"
+    ,"jade": "0.26.0"
+  }
+}
