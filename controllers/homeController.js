@@ -17,3 +17,11 @@ exports.editor = function(req, res) {
     }
   );
 };
+
+exports.view = function(req, res) {
+  res.render('view',
+    {"title" : "My Game",
+      "header" : "The story of ShoeJitsu"
+    }
+  );
+};

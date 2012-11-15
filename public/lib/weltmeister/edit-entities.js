@@ -41,7 +41,7 @@ wm.EditEntities = ig.Class.extend({
 		this.entityDefinitions = $('#entityDefinitions');
 		
 		$('#entityKey').bind( 'keydown', function(ev){ 
-			if( ev.which == 13 ){ 
+			if( ev.which == 13 ){
 				$('#entityValue').focus(); 
 				return false;
 			}
@@ -408,7 +408,7 @@ wm.EditEntities = ig.Class.extend({
 		if( value == floatVal ) {
 			value = floatVal;
 		}
-		
+
 		if( key == 'name' ) {
 			if( this.selectedEntity.name ) {
 				delete this.namedEntities[this.selectedEntity.name];

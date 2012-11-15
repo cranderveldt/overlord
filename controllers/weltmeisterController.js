@@ -5,21 +5,16 @@ exports.glob = function(req, res) {
   var glob = require('glob');
   var globs = req.query.glob;
   var nocache = req.query.nocache;
-  console.log(glob);
 
   // Possibly need to check to see if globs is an array.
   var files = new Array();
   for(var i in globs){
     var pattern = root + globs[i];
-    console.log(pattern);
     glob(pattern, {}, function(e, matches){
-
       for (var i in matches) {
         var match = matches[i].substring(root.length);
-        console.log('matcvh:'+match)
         files.push(match);
       }
-      console.log(files);
       res.send(files);
     });
   }
