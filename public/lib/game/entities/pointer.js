@@ -3,7 +3,7 @@ ig.module( 'game.entities.pointer')
   .requires('impact.entity')
   .defines(function(){
     EntityPointer = ig.Entity.extend({
-       checkAgainst: ig.Entity.TYPE.B
+       checkAgainst: ig.Entity.TYPE.BOTH
       ,collides: ig.Entity.COLLIDES.NEVER
       ,zIndex: 1000
       ,size: {x: 2, y: 2}

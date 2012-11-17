@@ -5,9 +5,11 @@ ig.module(
 	 'impact.game'
 	,'impact.font'
   ,'impact.scoreboard'
-  ,'game.levels.world'
   ,'game.levels.region1'
-  ,'game.entities.attacker-marine'
+  ,'game.entities.wootcounter'
+  ,'game.entities.attacker-soldier'
+  ,'game.entities.attacker-sniper'
+  ,'game.entities.attacker-commando'
   //,'plugins.gui'
 
 )
@@ -24,7 +26,9 @@ MyGame = ig.Game.extend({
     ig.input.bind( ig.KEY.MOUSE1, 'mouse1' ); // This is also bound in plugins.gui
 
     // Load all of the minions for the overlord.  This would be done on overlord selection screen or on minion purchase.
-    this.overlordMinions.push(new EntityAttackerMarine());
+    this.overlordMinions.push(new EntityAttackerSoldier());
+    this.overlordMinions.push(new EntityAttackerSniper());
+    this.overlordMinions.push(new EntityAttackerCommando());
     this.loadLevel(LevelRegion1);
 	},
 	

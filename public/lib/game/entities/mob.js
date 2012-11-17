@@ -34,13 +34,18 @@ ig.module( 'game.entities.mob')
           for(var i = 0; i < mobs.length; i++)
           {
             var mob = mobs[i];
-            if(mob.isSelected && typeof(mob.setTarget) == 'function'){
+            if(mob.isSelected && typeof(mob.setTarget) == 'function' && mob.target == null){
               mob.setTarget(this);
+              mob.unselect();
             }
           }
         }
       }
 
+      ,unselect: function(){
+        this.isSelected = false;
+        this.currentAnim = this.anims.idle;
+      }
       // target is a mob.
       ,inRange: function(target) {
 

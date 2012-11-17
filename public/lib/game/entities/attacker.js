@@ -6,6 +6,7 @@ ig.module( 'game.entities.attacker')
       type:  ig.Entity.TYPE.B
       // Set some of the properties
       ,collides: ig.Entity.COLLIDES.ACTIVE
+      ,checkAgainst: ig.Entity.TYPE.BOTH
       ,zIndex :100
       ,size: {x: 20, y: 20}
       ,health: 50
@@ -39,11 +40,14 @@ ig.module( 'game.entities.attacker')
           isValidClick = !(ig.game.pointerIsOnEntity(ig.game.scoreboard) || ig.game.pointerIsOnEntity(ig.game.hud));
         }
 
+        // Don't let the user change the target.
+        if(this.target){
+          isValidClick = false;
+        }
+
         if(isValidClick){
           var x = ig.input.mouse.x;
           var y = ig.input.mouse.y
-
-
 
           // Check to see if the click is not on the current target.
           if(this.target){
@@ -56,11 +60,21 @@ ig.module( 'game.entities.attacker')
 
           if(this.target){
             this.getPath(this.target.pos.x,this.target.pos.y,true,this.pathEntities,[this.target]);
-          }else {
-            this.getPath(x,y,true,this.pathEntities,[]);
+          }else { // No more click to move, Only click to target.
+            //this.getPath(x,y,true,this.pathEntities,[]);
           }
         }
 
+        // Check to see if the object reached the target.
+        if(this.target){
+          // If you're stuck recalculate the path.
+          if(this.prevPos.x == this.pos.x && this.prevPos.y == this.pos.y)
+          {
+            this.getPath(this.target.pos.x,this.target.pos.y,true,this.pathEntities,[this.target]);
+          }
+        }
+
+        this.prevPos = { x : this.pos.x, y : this.pos.y};
         this.followPath(this.speed,true);
         this.parent();
       }
@@ -78,7 +92,9 @@ ig.module( 'game.entities.attacker')
         /* Handle the click */
       }
       ,check : function(other){
-
+        if(other == this.target && typeof(other.activate) == 'function') {
+          other.activate(this);
+        }
       }
     });
   });

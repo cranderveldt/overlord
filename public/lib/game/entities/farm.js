@@ -45,14 +45,15 @@ ig.module( 'game.entities.farm')
         for(var i = 0; i < mobs.length; i++)
         {
           var mob = mobs[i];
-          mob.setTarget(this);
+          if(mob.isSelected && mob.target == null){
+            mob.setTarget(this);
+            mob.unselect();
+          }
         }
         this.isSelected = !this.isSelected;
       }
-      ,check : function(other){
-        if(this.woot > 0 && typeof(other.getWoot) == 'function') {
-          this.harvestWoot(other);
-        }
+      ,activate : function(other){
+        this.harvestWoot(other);
       }
     });
   });

@@ -13,12 +13,12 @@ ig.module( 'game.entities.hud')
       ,init: function( x, y, settings ) {
         this.parent(x,y,settings);
         this.addAnim('idle',1,[0]);
-        this.overlordBases = ig.game.getEntitiesByType('EntityBase');
-        ig.game.hud = this;
         if(!ig.global.wm) {
+          this.overlordBases = ig.game.getEntitiesByType('EntityBase');
+          ig.game.hud = this;
           var hud = this;
           // Add the text
-
+          var guiFont = new ig.Font( 'media/black8.font.png' );
           // Get a list of all the available HUD Commands.
 
           // Get a list of all available minions.
@@ -30,11 +30,13 @@ ig.module( 'game.entities.hud')
             var minion = minions[m];
             var minionSettings = {
               name: minion.name
+             ,minion : minion
              ,title: minion.name
+             ,font : guiFont
              ,showTitle : true
              ,group: 'minions'
-             ,size: { x: minion.size.x, y: minion.size.y}
-             ,pos: { x: offsetX + m*20 , y: offsetY }
+             ,size: { x: minion.size.x, y: minion.size.y + 15}
+             ,pos: { x: offsetX + m*50 , y: offsetY }
              ,state: {
                normal: {
                  image: minion.animSheet.image
@@ -54,7 +56,7 @@ ig.module( 'game.entities.hud')
              },
              click: function() {
                  var base = hud.overlordBases[0];
-                 ig.game.spawnEntity(minion.class,base.pos.x+10,base.pos.y+10);
+                 ig.game.spawnEntity(this.minion.class,base.pos.x+10,base.pos.y+10);
              }
             }
             ig.gui.element.add(minionSettings);
