@@ -12,10 +12,11 @@ ig.module( 'game.entities.farm')
       ,wootRefresh : 5
       ,animSheet: new ig.AnimationSheet( 'media/minion.gold16.png', 16, 16 )
       ,init: function( x, y, settings ) {
-        this.addAnim('idle',.1,[1,2]);
+        this.addAnim('idle',1,[1]);
+        this.addAnim('harvesting',.1,[1,2,3,3,2,1]);
         this.addAnim('empty',1,[4]);
         this.parent( x, y, settings );
-        this.refreshTimer = new ig.Timer(this.wootRefresh);
+        this.refreshTimer
       }
       ,refreshWoot :function(){
         this.woot = this.wootRefreshAmount
@@ -23,17 +24,22 @@ ig.module( 'game.entities.farm')
         this.refreshTimer.reset();
       }
       ,harvestWoot : function(harvester){
-        harvester.getWoot(this.woot);
-        this.currentAnim = this.anims.empty;
-        this.woot = 0;
-        this.refreshTimer.reset();
+        if(harvester.isActivating){
+          if(!this.isStarted){
+            // TODO harvester should have a woot harvest rate.
+            this.refreshTimer = new ig.Timer(3);
+            this.isStarted = true;
+          }
+
+          this.harvester = harvester;
+          this.currentAnim = this.anims.harvesting;
+        }
       }
       ,update: function() {
-        if(this.refreshTimer.delta() > 0){
-          if(this.woot > 0){
-            ig.game.wootDefender += this.wootRefreshAmount;
-          }
-          this.refreshWoot()
+        if(this.harvester && this.refreshTimer.delta() >= 0){
+          this.harvester.getWoot(this.woot);
+          this.harvester.evac();
+          this.kill();
         }
 
         this.parent();

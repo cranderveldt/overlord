@@ -22,7 +22,7 @@ ig.module( 'game.entities.tower')
       ,animSheet: new ig.AnimationSheet( 'media/minion.blue16.png', 16, 16)
       ,init: function( x, y, settings ) {
         this.addAnim('idle',1,[1,2]);
-        this.addAnim('firing',.2,[2,3,4]);
+        this.addAnim('firing',.2,[2,3,4,4,3,2]);
 
         this.weapon = 'EntityBullet';
         this.fireTimer = new ig.Timer(this.fireRate);
@@ -52,7 +52,7 @@ ig.module( 'game.entities.tower')
           spawn.y = positions.bottom;
         }
 
-        ig.game.spawnEntity( this.weapon, spawn.x, spawn.y, { target : target} ); //Nothing to special here, just make sure you pass the angle we calculated in
+        //ig.game.spawnEntity( this.weapon, spawn.x, spawn.y, { target : target} ); //Nothing to special here, just make sure you pass the angle we calculated in
       }
       ,update: function() {
 

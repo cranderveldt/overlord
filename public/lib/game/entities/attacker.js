@@ -23,7 +23,7 @@ ig.module( 'game.entities.attacker')
       ,init: function( x, y, settings ) {
         this.addAnim('idle',.5,[1,2]);
         this.addAnim('selected',1,[0]);
-        this.addAnim('moving',.2,[1,2,3,4]);
+        this.addAnim('moving',.2,[1,2,3,4,4,3,2,1]);
         // Call the parent constructor
         this.parent( x, y, settings );
 
@@ -61,9 +61,6 @@ ig.module( 'game.entities.attacker')
           }
 
           this.calculatePath(x,y);
-          if(this.path){
-            this.isSelected = false;
-          }
         }
 
         // If you're stuck recalculate the path.
@@ -115,9 +112,12 @@ ig.module( 'game.entities.attacker')
         if(this.isSelected){
           this.currentAnim = this.anims.selected;
         }
+
+        this.parent();
       }
       ,check : function(other){
         if(other == this.target && typeof(other.activate) == 'function') {
+          this.isActivating = true;
           other.activate(this);
         }
       }

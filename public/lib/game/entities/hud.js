@@ -12,6 +12,11 @@ ig.module( 'game.entities.hud')
       ,init: function( x, y, settings ) {
         this.parent(x,y,settings);
         if(!ig.global.wm) {
+
+          var scoreboardFont = new ig.Font( 'media/black16.font.png' );
+          ig.game.spawnEntity( 'EntityWootcounter', this.pos.x+10, this.pos.y+10, { name : 'Woot', wootGlobal : 'wootOverlord', font : scoreboardFont} );
+
+
           this.overlordBases = ig.game.getEntitiesByType('EntityBase');
           ig.game.hud = this;
           var hud = this;
@@ -22,7 +27,7 @@ ig.module( 'game.entities.hud')
           // Get a list of all available minions.
           var minions = ig.game.overlordMinions;
 
-          var offsetX = this.pos.x + 20;
+          var offsetX = this.pos.x + 200;
           var offsetY = this.pos.y + 20;
           for(var m = 0; m < minions.length; m++){
             var minion = minions[m];
@@ -32,23 +37,24 @@ ig.module( 'game.entities.hud')
              ,title: minion.name
              ,font : guiFont
              ,showTitle : true
+             ,count : 3
              ,group: 'minions'
              ,size: { x: minion.size.x, y: minion.size.y + 15}
              ,pos: { x: offsetX + m*50 , y: offsetY }
              ,state: {
                normal: {
                  image: minion.animSheet.image
-                 , tile: 2
+                 , tile: 1
                  , tileSize: minion.size.x
                }
                , hover: {
                  image: minion.animSheet.image
-                 , tile: 3
+                 , tile: 2
                  , tileSize:  minion.size.x
                }
                 , active: {
                   image: minion.animSheet.image
-                  , tile: 4
+                  , tile: 0
                   , tileSize:  minion.size.x
                 }
              },
@@ -62,7 +68,14 @@ ig.module( 'game.entities.hud')
                  base = hud.overlordBases[0];
                }
 
-               ig.game.spawnEntity(this.minion.class,base.pos.x+10,base.pos.y+10);
+               if(this.count > 0){
+                 ig.game.spawnEntity(this.minion.class,base.pos.x+10,base.pos.y+10);
+                 this.count -= 1;
+
+                 if(this.count == 0){
+                   this.disabled = true;
+                 }
+               }
              }
             }
             ig.gui.element.add(minionSettings);

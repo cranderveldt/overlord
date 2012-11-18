@@ -186,11 +186,11 @@ ig.module('plugins.gui')
               element.font.draw(element.title.toUpperCase(), element.pos.x+3, (element.pos.y+element.size.y)-(element.font.height-2), ig.Font.ALIGN.LEFT);
             }*/
             if (element.showTitle && element.font) {
-              element.font.draw(element.title, element.pos.x, (element.pos.y+element.size.y)-(element.font.height-2), ig.Font.ALIGN.LEFT);
+              element.font.draw(element.title, element.pos.x + element.size.x/2, (element.pos.y)-(element.font.height), ig.Font.ALIGN.CENTER);
             }
             // Show Count
-            if (element.count > 1 && element.font) {
-              element.font.draw(element.count,(element.pos.x+element.size.x)-2,(element.pos.y+element.size.y)-(element.font.height-2), ig.Font.ALIGN.RIGHT);
+            if (element.count > 0 && element.font) {
+              element.font.draw(element.count,(element.pos.x  + element.size.x/2),(element.pos.y + element.size.y)-(element.font.height), ig.Font.ALIGN.CENTER);
             }
 
             // Restore

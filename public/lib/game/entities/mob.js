@@ -6,9 +6,9 @@ ig.module( 'game.entities.mob')
       type:  ig.Entity.TYPE.B
       // Set some of the properties
       ,collides: ig.Entity.COLLIDES.PASSIVE
-      ,pathEntities : ['EntityFarm','EntityMob','EntityHud'] // EntityHud isn't working with aStar, maybe because it's so big.
+      ,pathEntities : ['EntityFarm','EntityMob','EntityHud','EntityTower'] // EntityHud isn't working with aStar, maybe because it's so big.
       ,zIndex :10
-      ,size: {x: 20, y: 20}
+      ,size: {x: 16, y: 16}
       ,getPositions : function(){
         var positions = {
             left : this.pos.x
@@ -21,12 +21,6 @@ ig.module( 'game.entities.mob')
         return positions;
       }
       ,clicked: function() {
-        this.isSelected = !this.isSelected;
-        this.currentAnim = this.anims.idle;
-        if(this.isSelected){
-          this.currentAnim = this.anims.clicked;
-        }
-
         if(!this.selected) {// Don't select yourself.
         // Get a list of all active mobs and set this item as the target.
           var mobs = ig.game.getEntitiesByType( 'EntityAttacker' );
@@ -34,7 +28,7 @@ ig.module( 'game.entities.mob')
           for(var i = 0; i < mobs.length; i++)
           {
             var mob = mobs[i];
-            if(mob.isSelected && typeof(mob.setTarget) == 'function' && mob.target == null){
+            if(mob != this && mob.isSelected && typeof(mob.setTarget) == 'function' && mob.target == null){
               mob.setTarget(this);
               mob.unselect();
             }
@@ -52,6 +46,12 @@ ig.module( 'game.entities.mob')
         // This is to the center. Need to check for size.
         return this.distanceTo(target) <= this.fireRange
       }
+      ,evac : function(){
+        var guiElement = ig.gui.element.action('getByName', this.name);
+        guiElement.count += 1;
+        guiElement.disabled = false;
+        this.kill();
+      }
       ,draw: function(){
         if(!ig.global.wm){
           // Draw health bar
@@ -60,7 +60,7 @@ ig.module( 'game.entities.mob')
             var rect = {
                 x : (position.left + 1) * ig.system.scale
               , y : (position.top - 7) * ig.system.scale
-              , w : (this.size.x-2) * ig.system.scale
+              , w : (14) * ig.system.scale // Force the size.
               , h : 2 * ig.system.scale
             }
 
