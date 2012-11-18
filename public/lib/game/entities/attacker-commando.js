@@ -5,6 +5,9 @@ ig.module( 'game.entities.attacker-commando')
     EntityAttackerCommando = EntityAttacker.extend({
        class: 'EntityAttackerCommando'
       ,name: 'Commando'
-      ,animSheet: new ig.AnimationSheet( 'media/players20.png', 20, 20 )
+      ,animSheet: new ig.AnimationSheet( 'media/minion.green16.png', 16, 16)
+      ,init: function(x,y,settings){
+        this.parent(x, y,settings);
+      }
     });
   });

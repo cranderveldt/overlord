@@ -1,6 +1,6 @@
 // Create your own entity, subclassed from ig.Enitity
 ig.module( 'game.entities.attacker')
-  .requires('impact.entity','plugins.astar','game.entities.mob')
+  .requires('impact.entity','game.entities.mob','plugins.astar','plugins.astarUnsticker')
   .defines(function(){
     EntityAttacker = EntityMob.extend({
       type:  ig.Entity.TYPE.B
@@ -8,20 +8,22 @@ ig.module( 'game.entities.attacker')
       ,collides: ig.Entity.COLLIDES.ACTIVE
       ,checkAgainst: ig.Entity.TYPE.BOTH
       ,zIndex :100
-      ,size: {x: 20, y: 20}
+      ,size: {x: 16, y: 16}
       ,health: 50
       ,maxHealth: 50
       ,movementspeed : 1
       ,veolicty : {x:0,y:0}
+      ,prevPos : { x:-1,y:-1}
       ,speed : 100
       ,isSelected : false
       ,moveTarget : null
       ,target : null
       // Load an animation sheet
-      ,animSheet: new ig.AnimationSheet( 'media/players20.png', 20, 20 )
+      ,animSheet: new ig.AnimationSheet( 'media/minion.red16.png', 16, 16 )
       ,init: function( x, y, settings ) {
-        this.addAnim('idle',1,[3]);
-        this.addAnim('clicked',1,[4]);
+        this.addAnim('idle',.5,[1,2]);
+        this.addAnim('selected',1,[0]);
+        this.addAnim('moving',.2,[1,2,3,4]);
         // Call the parent constructor
         this.parent( x, y, settings );
 
@@ -58,25 +60,50 @@ ig.module( 'game.entities.attacker')
             }
           }
 
-          if(this.target){
-            this.getPath(this.target.pos.x,this.target.pos.y,true,this.pathEntities,[this.target]);
-          }else { // No more click to move, Only click to target.
-            //this.getPath(x,y,true,this.pathEntities,[]);
+          this.calculatePath(x,y);
+          if(this.path){
+            this.isSelected = false;
           }
         }
 
-        // Check to see if the object reached the target.
-        if(this.target){
-          // If you're stuck recalculate the path.
-          if(this.prevPos.x == this.pos.x && this.prevPos.y == this.pos.y)
-          {
-            this.getPath(this.target.pos.x,this.target.pos.y,true,this.pathEntities,[this.target]);
+        // If you're stuck recalculate the path.
+        if(this.path && this.prevPos.x == this.pos.x && this.prevPos.y == this.pos.y)
+        {
+          this.isStuck += 1;
+          var destination = this.path[this.path.length-1];
+          this.calculatePath(destination.x,destination.y);
+        } else {
+          this.isStuck = 0;
+        }
+
+        if(!this.isSelected) {
+          if(this.headingDirection == 0 && this.currentAnim != this.anims.idle){
+            this.currentAnim = this.anims.idle;
+            this.size = {x: 16,y:16};
+          }
+
+          if(this.headingDirection > 0 && this.currentAnim != this.anims.moving){
+            this.currentAnim = this.anims.moving;
           }
         }
 
         this.prevPos = { x : this.pos.x, y : this.pos.y};
         this.followPath(this.speed,true);
         this.parent();
+      }
+      ,calculatePath: function(x,y){
+        if(this.isStuck >= 2){
+          // Move to the previous position.
+          this.size = {x: 8,y:8};
+        }
+
+        if(this.target){
+          this.getPath(this.target.pos.x,this.target.pos.y,true,this.pathEntities,[this.target]);
+        } else { // Click to move
+          this.getPath(x,y,true,this.pathEntities,[]);
+        }
+
+
       }
       ,draw : function(){
         this.drawPath(255, 255, 0, 0.8,1);
@@ -86,10 +113,8 @@ ig.module( 'game.entities.attacker')
         this.isSelected = !this.isSelected;
         this.currentAnim = this.anims.idle;
         if(this.isSelected){
-          this.currentAnim = this.anims.clicked;
+          this.currentAnim = this.anims.selected;
         }
-        //this.game.$scoreboard.update({player:'player one'});
-        /* Handle the click */
       }
       ,check : function(other){
         if(other == this.target && typeof(other.activate) == 'function') {

@@ -2,20 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bc05199-ec27-4a1c-bd40-2076f0de228e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lib/game/entities/attacker-commando.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lib/game/entities/attacker-sniper.js" />
-      <change type="DELETED" beforePath="C:\Users\hero\Documents\overlord\src\public\lib\game\entities\kitten.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\hero\Documents\overlord\src\public\lib\game\levels\world.js" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\hero\Documents\overlord\src\public\lib\game\levels\world10.js" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\hero\Documents\overlord\src\public\lib\game\entities\attacker-marine.js" afterPath="$PROJECT_DIR$/public/lib/game/entities/attacker-soldier.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lib/plugins/astarUnsticker.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/lib/game/entities/attacker-commando.js" afterPath="$PROJECT_DIR$/public/lib/game/entities/attacker-commando.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/lib/game/entities/attacker-sniper.js" afterPath="$PROJECT_DIR$/public/lib/game/entities/attacker-sniper.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/lib/game/entities/attacker-soldier.js" afterPath="$PROJECT_DIR$/public/lib/game/entities/attacker-soldier.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/lib/game/entities/attacker.js" afterPath="$PROJECT_DIR$/public/lib/game/entities/attacker.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/lib/game/entities/farm.js" afterPath="$PROJECT_DIR$/public/lib/game/entities/farm.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/lib/game/entities/hud.js" afterPath="$PROJECT_DIR$/public/lib/game/entities/hud.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/lib/game/entities/mob.js" afterPath="$PROJECT_DIR$/public/lib/game/entities/mob.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/lib/game/entities/pointer.js" afterPath="$PROJECT_DIR$/public/lib/game/entities/pointer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/lib/game/levels/region1.js" afterPath="$PROJECT_DIR$/public/lib/game/levels/region1.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/lib/game/entities/tower.js" afterPath="$PROJECT_DIR$/public/lib/game/entities/tower.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/lib/game/main.js" afterPath="$PROJECT_DIR$/public/lib/game/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/lib/plugins/gui.js" afterPath="$PROJECT_DIR$/public/lib/plugins/gui.js" />
     </list>
     <ignored path="src.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,46 +33,19 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="scoreboard.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/lib/game/entities/scoreboard.js">
+      <file leaf-file-name="pointer.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/lib/game/entities/pointer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="5" selection-start="965" selection-end="965" vertical-scroll-proportion="0.0">
+            <state line="12" column="23" selection-start="482" selection-end="482" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="attacker-commando.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/lib/game/entities/attacker-commando.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="20" selection-start="329" selection-end="329" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/lib/game/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="16" selection-start="70" selection-end="70" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/lib/game/entities/base.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="attacker.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="attacker.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/lib/game/entities/attacker.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="99" selection-start="2727" selection-end="2727" vertical-scroll-proportion="0.713885">
+            <state line="57" column="7" selection-start="2092" selection-end="2092" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -83,7 +54,54 @@
       <file leaf-file-name="farm.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/lib/game/entities/farm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="15" selection-start="1592" selection-end="1603" vertical-scroll-proportion="0.0">
+            <state line="14" column="30" selection-start="498" selection-end="498" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tower.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/lib/game/entities/tower.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="29" selection-start="806" selection-end="807" vertical-scroll-proportion="0.4516129">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="astarUnsticker.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/lib/plugins/astarUnsticker.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="0" selection-start="1297" selection-end="1297" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="astar.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/lib/plugins/astar.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="51" column="53" selection-start="1401" selection-end="1405" vertical-scroll-proportion="-9.0">
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="attacker-soldier.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/lib/game/entities/attacker-soldier.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="74" selection-start="379" selection-end="379" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="attacker-sniper.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/lib/game/entities/attacker-sniper.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4" column="50" selection-start="241" selection-end="241" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -98,28 +116,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tower.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/lib/game/entities/tower.js">
+      <file leaf-file-name="attacker-commando.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/lib/game/entities/attacker-commando.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pointer.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/lib/game/entities/pointer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="40" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="wootcounter.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/lib/game/entities/wootcounter.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="34" selection-start="242" selection-end="242" vertical-scroll-proportion="0.0">
+            <state line="12" column="5" selection-start="480" selection-end="480" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -140,16 +140,18 @@
       <list>
         <option value="$PROJECT_DIR$/public/lib/game/entities/attacker-ninja.js" />
         <option value="$PROJECT_DIR$/public/lib/plugins/gui.js" />
-        <option value="$PROJECT_DIR$/public/lib/game/entities/attacker-sniper.js" />
-        <option value="$PROJECT_DIR$/public/lib/game/entities/attacker-soldier.js" />
-        <option value="$PROJECT_DIR$/public/lib/game/entities/hud.js" />
-        <option value="$PROJECT_DIR$/public/lib/game/entities/attacker-commando.js" />
         <option value="$PROJECT_DIR$/public/lib/game/entities/scoreboard.js" />
-        <option value="$PROJECT_DIR$/public/lib/game/main.js" />
-        <option value="$PROJECT_DIR$/public/lib/game/entities/pointer.js" />
-        <option value="$PROJECT_DIR$/public/lib/game/entities/farm.js" />
         <option value="$PROJECT_DIR$/public/lib/game/entities/mob.js" />
+        <option value="$PROJECT_DIR$/public/lib/game/entities/attacker-soldier.js" />
+        <option value="$PROJECT_DIR$/public/lib/game/entities/attacker-sniper.js" />
+        <option value="$PROJECT_DIR$/public/lib/game/entities/attacker-commando.js" />
+        <option value="$PROJECT_DIR$/public/lib/game/entities/hud.js" />
+        <option value="$PROJECT_DIR$/public/lib/game/entities/pointer.js" />
+        <option value="$PROJECT_DIR$/public/lib/game/main.js" />
+        <option value="$PROJECT_DIR$/public/lib/plugins/astarUnsticker.js" />
         <option value="$PROJECT_DIR$/public/lib/game/entities/attacker.js" />
+        <option value="$PROJECT_DIR$/public/lib/game/entities/tower.js" />
+        <option value="$PROJECT_DIR$/public/lib/game/entities/farm.js" />
       </list>
     </option>
   </component>
@@ -246,7 +248,47 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugins" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -344,9 +386,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/jumpnrun/jumpnrun/lib/game/levels/test.js" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\hero\Documents\overlord\src\public\lib\plugins" />
       <recent name="C:\Users\hero\Documents\overlord\src\public\lib\game\entities" />
     </key>
   </component>
@@ -434,61 +478,14 @@
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/controllers/homeController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="36" selection-start="486" selection-end="486" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="1" selection-start="393" selection-end="393" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lib/game/entities/attacker-soldier.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="5" selection-start="391" selection-end="391" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lib/game/entities/hud.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="38" selection-start="482" selection-end="482" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lib/game/entities/attacker-commando.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="20" selection-start="329" selection-end="329" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lib/game/entities/wootcounter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="34" selection-start="242" selection-end="242" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -500,9 +497,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/views/view.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/lib/game/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="16" selection-start="70" selection-end="70" vertical-scroll-proportion="0.0">
+        <state line="50" column="5" selection-start="1461" selection-end="1461" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lib/game/entities/hud.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="15" selection-start="1584" selection-end="1584" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -514,23 +525,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/lib/game/entities/attacker-sniper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="50" selection-start="241" selection-end="241" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lib/game/entities/attacker-commando.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="5" selection-start="480" selection-end="480" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lib/plugins/astar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="51" column="53" selection-start="1401" selection-end="1405" vertical-scroll-proportion="-9.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lib/game/entities/attacker-soldier.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="74" selection-start="379" selection-end="379" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lib/plugins/astarUnsticker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="0" selection-start="1297" selection-end="1297" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/lib/game/entities/pointer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="40" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0">
+        <state line="12" column="23" selection-start="482" selection-end="482" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/lib/game/entities/farm.js">
+    <entry file="file://$PROJECT_DIR$/public/lib/game/entities/attacker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="15" selection-start="1592" selection-end="1603" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lib/game/entities/tower.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="57" column="7" selection-start="2092" selection-end="2092" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -542,9 +583,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/lib/game/entities/attacker.js">
+    <entry file="file://$PROJECT_DIR$/public/lib/game/entities/farm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="99" selection-start="2727" selection-end="2727" vertical-scroll-proportion="0.713885">
+        <state line="14" column="30" selection-start="498" selection-end="498" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lib/game/entities/tower.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="29" selection-start="806" selection-end="807" vertical-scroll-proportion="0.4516129">
           <folding />
         </state>
       </provider>

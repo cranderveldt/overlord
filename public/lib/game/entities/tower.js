@@ -7,7 +7,7 @@ ig.module( 'game.entities.tower')
       // Set some of the properties
       ,collides: ig.Entity.COLLIDES.FIXED
       ,zIndex :100
-      ,size: {x: 20, y: 20}
+      ,size: {x: 16, y: 16}
       ,health: 50
       ,movementspeed : 1
       ,weapon : 'EntityBullet'
@@ -19,10 +19,10 @@ ig.module( 'game.entities.tower')
       ,moveTarget : null
       ,target : null
       // Load an animation sheet
-      ,animSheet: new ig.AnimationSheet( 'media/defenders20.png', 20, 20 )
+      ,animSheet: new ig.AnimationSheet( 'media/minion.blue16.png', 16, 16)
       ,init: function( x, y, settings ) {
-        this.addAnim('idle',1,[3]);
-        this.addAnim('clicked',1,[4]);
+        this.addAnim('idle',1,[1,2]);
+        this.addAnim('firing',.2,[2,3,4]);
 
         this.weapon = 'EntityBullet';
         this.fireTimer = new ig.Timer(this.fireRate);
@@ -70,7 +70,7 @@ ig.module( 'game.entities.tower')
             if(this.inRange(attacker))
             {
               this.target = attacker;
-              this.currentAnim = this.anims.clicked;
+              this.currentAnim = this.anims.firing;
               break;
             }
           }

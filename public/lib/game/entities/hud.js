@@ -6,13 +6,11 @@ ig.module( 'game.entities.hud')
        _wmDrawBox : true
       ,collides: ig.Entity.COLLIDES.FIXED
       ,bgColor : "rgb(220,220,220)"
-      ,size: {x: 640, y: 60}
+      ,size: {x: 480, y: 60}
       ,zIndex : 0
       // Load an animation sheet
-      ,animSheet: new ig.AnimationSheet( 'media/players20.png', 640, 40 )
       ,init: function( x, y, settings ) {
         this.parent(x,y,settings);
-        this.addAnim('idle',1,[0]);
         if(!ig.global.wm) {
           this.overlordBases = ig.game.getEntitiesByType('EntityBase');
           ig.game.hud = this;
@@ -55,8 +53,16 @@ ig.module( 'game.entities.hud')
                 }
              },
              click: function() {
-                 var base = hud.overlordBases[0];
-                 ig.game.spawnEntity(this.minion.class,base.pos.x+10,base.pos.y+10);
+               var base;
+               if(hud.overlordBases.length > 0)
+               {
+                 base = hud.overlordBases[0];
+               } else {
+                 hud.overlordBases = ig.game.getEntitiesByType('EntityBase');
+                 base = hud.overlordBases[0];
+               }
+
+               ig.game.spawnEntity(this.minion.class,base.pos.x+10,base.pos.y+10);
              }
             }
             ig.gui.element.add(minionSettings);

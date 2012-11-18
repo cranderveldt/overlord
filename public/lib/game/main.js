@@ -6,6 +6,8 @@ ig.module(
 	,'impact.font'
   ,'impact.scoreboard'
   ,'game.levels.region1'
+  ,'game.levels.bank'
+  ,'game.entities.base'
   ,'game.entities.wootcounter'
   ,'game.entities.attacker-soldier'
   ,'game.entities.attacker-sniper'
@@ -29,7 +31,7 @@ MyGame = ig.Game.extend({
     this.overlordMinions.push(new EntityAttackerSoldier());
     this.overlordMinions.push(new EntityAttackerSniper());
     this.overlordMinions.push(new EntityAttackerCommando());
-    this.loadLevel(LevelRegion1);
+    this.loadLevel(LevelBank);
 	},
 	
 	update: function() {
@@ -41,16 +43,19 @@ MyGame = ig.Game.extend({
 		this.parent();
 	}
   ,pointerIsOnEntity: function(entity){
-    var isOnX =  entity.pos.x <= ig.input.mouse.x && ig.input.mouse.x <= entity.pos.x +entity.size.x;
-    var isOnY =  entity.pos.y <= ig.input.mouse.y && ig.input.mouse.y <= entity.pos.y +entity.size.y;
+    if(entity){
+      var isOnX =  entity.pos.x <= ig.input.mouse.x && ig.input.mouse.x <= entity.pos.x +entity.size.x;
+      var isOnY =  entity.pos.y <= ig.input.mouse.y && ig.input.mouse.y <= entity.pos.y +entity.size.y;
 
-    return isOnX && isOnY;
+      return isOnX && isOnY;
+    }
+    return false;
   }
 });
 
 
 // Start the Game with 60fps, a resolution of 320x240, scaled
 // up by a factor of 2
-ig.main( '#canvas', MyGame, 60, 640, 480, 1 );
+ig.main( '#canvas', MyGame, 60, 480, 800, 1 );
 
 });

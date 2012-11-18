@@ -5,15 +5,15 @@ ig.module( 'game.entities.farm')
        type: ig.Entity.TYPE.A
       ,checkAgainst: ig.Entity.TYPE.B
       ,collides : ig.Entity.COLLIDES.FIXED
-      ,size: {x: 20, y: 20}
+      ,size: {x: 16, y: 16}
       ,zIndex : 0
       ,woot : 100
       ,wootRefreshAmount : 50
       ,wootRefresh : 5
-      ,animSheet: new ig.AnimationSheet( 'media/world20.png', 20, 20 )
+      ,animSheet: new ig.AnimationSheet( 'media/minion.gold16.png', 16, 16 )
       ,init: function( x, y, settings ) {
-        this.addAnim('idle',1,[4]);
-        this.addAnim('empty',1,[0]);
+        this.addAnim('idle',.1,[1,2]);
+        this.addAnim('empty',1,[4]);
         this.parent( x, y, settings );
         this.refreshTimer = new ig.Timer(this.wootRefresh);
       }

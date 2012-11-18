@@ -6,8 +6,8 @@ ig.module( 'game.entities.pointer')
        checkAgainst: ig.Entity.TYPE.BOTH
       ,collides: ig.Entity.COLLIDES.NEVER
       ,zIndex: 1000
-      ,size: {x: 2, y: 2}
-      ,animSheet: new ig.AnimationSheet( 'media/players20.png', 2, 2 )
+      ,size: {x: 1, y: 1}
+      ,animSheet: new ig.AnimationSheet( 'media/players20.png', 1, 1 )
       ,init: function( x, y, settings ) {
         this.addAnim('idle',1,[0]);
         // Call the parent constructor
