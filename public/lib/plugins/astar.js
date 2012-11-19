@@ -358,8 +358,22 @@ ig.module(
 
             // Add or erase the entity to the collision map
             if(!ignoreThisEntity) {
-              if(addErase && ig.game.collisionMap.data[(entities[j].pos.y/ ig.game.collisionMap.tilesize).floor()][(entities[j].pos.x/ ig.game.collisionMap.tilesize).floor()] == 0) {
-                ig.game.collisionMap.data[(entities[j].pos.y/ ig.game.collisionMap.tilesize).floor()][(entities[j].pos.x/ ig.game.collisionMap.tilesize).floor()] = 9999;
+              var tileX =(entities[j].pos.x/ ig.game.collisionMap.tilesize).floor();
+              var tileY =(entities[j].pos.y/ ig.game.collisionMap.tilesize).floor();
+              if(addErase && ig.game.collisionMap.data[tileY][tileX] == 0) {
+                ig.game.collisionMap.data[tileY][tileX] = 9999;
+                if(entities[j].size.x > ig.game.collisionMap.tilesize){
+                  var xTilesNeeded = (entities[j].size.x/ig.game.collisionMap.tilesize).ceil()-1;
+                }
+                if(entities[j].size.y > ig.game.collisionMap.tilesize){
+                  var yTilesNeeded = (entities[j].size.y/ig.game.collisionMap.tilesize).ceil()-1;
+                }
+                for(var yt = 0; yt <= yTilesNeeded; yt++){
+                  for(var xt = 0; xt <= xTilesNeeded; xt++){
+                    ig.game.collisionMap.data[tileY+yt][tileX+xt] = 9999;
+                  }
+                }
+
               } else if (!addErase && ig.game.collisionMap.data[(entities[j].pos.y/ ig.game.collisionMap.tilesize).floor()][(entities[j].pos.x/ ig.game.collisionMap.tilesize).floor()] == 9999) {
                 ig.game.collisionMap.data[(entities[j].pos.y/ ig.game.collisionMap.tilesize).floor()][(entities[j].pos.x/ ig.game.collisionMap.tilesize).floor()] = 0;
               }

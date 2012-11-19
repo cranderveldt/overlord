@@ -38,7 +38,7 @@ ig.module( 'game.entities.farm')
       ,update: function() {
         if(this.harvester && this.refreshTimer.delta() >= 0){
           this.harvester.getWoot(this.woot);
-          this.harvester.evac();
+          this.harvester.triggerEvac();
           this.kill();
         }
 

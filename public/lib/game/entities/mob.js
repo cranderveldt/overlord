@@ -6,7 +6,7 @@ ig.module( 'game.entities.mob')
       type:  ig.Entity.TYPE.B
       // Set some of the properties
       ,collides: ig.Entity.COLLIDES.PASSIVE
-      ,pathEntities : ['EntityFarm','EntityMob','EntityHud','EntityTower'] // EntityHud isn't working with aStar, maybe because it's so big.
+      ,pathEntities : ['EntityFarm','EntityMob','EntityHud'] // EntityHud isn't working with aStar, maybe because it's so big.
       ,zIndex :10
       ,size: {x: 16, y: 16}
       ,getPositions : function(){
@@ -35,7 +35,6 @@ ig.module( 'game.entities.mob')
           }
         }
       }
-
       ,unselect: function(){
         this.isSelected = false;
         this.currentAnim = this.anims.idle;
@@ -46,11 +45,21 @@ ig.module( 'game.entities.mob')
         // This is to the center. Need to check for size.
         return this.distanceTo(target) <= this.fireRange
       }
+      ,triggerEvac : function(){
+        this.evacTimer = new ig.Timer(3);
+      }
       ,evac : function(){
         var guiElement = ig.gui.element.action('getByName', this.name);
         guiElement.count += 1;
         guiElement.disabled = false;
         this.kill();
+
+      }
+      ,update : function(){
+        if(this.evacTimer && this.evacTimer.delta() >= 0){
+          this.evac();
+        }
+        this.parent();
       }
       ,draw: function(){
         if(!ig.global.wm){

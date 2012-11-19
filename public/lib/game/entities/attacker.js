@@ -97,7 +97,7 @@ ig.module( 'game.entities.attacker')
         if(this.target){
           this.getPath(this.target.pos.x,this.target.pos.y,true,this.pathEntities,[this.target]);
         } else { // Click to move
-          this.getPath(x,y,true,this.pathEntities,[]);
+          this.getPath(x,y,true,this.pathEntities);
         }
 
 

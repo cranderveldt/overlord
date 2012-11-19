@@ -7,7 +7,7 @@ ig.module( 'game.entities.tower')
       // Set some of the properties
       ,collides: ig.Entity.COLLIDES.FIXED
       ,zIndex :100
-      ,size: {x: 16, y: 16}
+      ,size: {x: 8, y: 8}
       ,health: 50
       ,movementspeed : 1
       ,weapon : 'EntityBullet'
