@@ -73,10 +73,12 @@ ig.module( 'game.entities.attacker')
         // If you're stuck recalculate the path.
         if(this.path && this.prevPos.x == this.pos.x && this.prevPos.y == this.pos.y)
         {
-          if(this.target && this.isActivating){
+          if(this.target && this.isActivating ){
+            this.path = null;
+          } else if (this.target && this.inRange(this.target)){
             this.path = null;
           } else {
-            this.isStuck += 1;
+              this.isStuck += 1
             var destination = this.path[this.path.length-1];
             this.calculatePath(destination.x,destination.y);
           }

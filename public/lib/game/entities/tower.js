@@ -9,6 +9,7 @@ ig.module( 'game.entities.tower')
       ,zIndex :100
       ,size: {x: 16, y: 16}
       ,health: 50
+      ,maxHealth :50
       ,movementspeed : 1
       ,weapon : 'EntityBullet'
       ,veolicty : {x:0,y:0}

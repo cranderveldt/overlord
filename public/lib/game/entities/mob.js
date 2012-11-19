@@ -64,7 +64,15 @@ ig.module( 'game.entities.mob')
       // target is a mob.
       ,inRange: function(target) {
         // This is to the center. Need to check for size.
-        return this.distanceTo(target) <= this.fireRange
+        var isInRange = this.distanceTo(target) <= this.fireRange;
+        var isDirectShot = false;
+        if(isInRange){
+          var positions = target.getPositions();
+          this.getPath(positions.center.x,positions.center.y,true);
+          isDirectShot = this.path.length <= 2;
+        }
+
+        return isInRange && isDirectShot;
       }
       ,triggerEvac : function(){
         this.evacTimer = new ig.Timer(3);
