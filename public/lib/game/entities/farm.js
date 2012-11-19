@@ -1,5 +1,5 @@
 ig.module( 'game.entities.farm')
-  .requires('impact.entity')
+  .requires('impact.entity','plugins.moveHelper')
   .defines(function(){
     EntityFarm = ig.Entity.extend({
        type: ig.Entity.TYPE.A

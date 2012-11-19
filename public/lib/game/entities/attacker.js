@@ -1,6 +1,6 @@
 // Create your own entity, subclassed from ig.Enitity
 ig.module( 'game.entities.attacker')
-  .requires('impact.entity','game.entities.mob','plugins.astar','plugins.astarUnsticker')
+  .requires('impact.entity','game.entities.mob','plugins.astar')
   .defines(function(){
     EntityAttacker = EntityMob.extend({
       type:  ig.Entity.TYPE.B
@@ -12,6 +12,7 @@ ig.module( 'game.entities.attacker')
       ,health: 50
       ,maxHealth: 50
       ,movementspeed : 1
+      ,weapon : 'EntityBullet'
       ,veolicty : {x:0,y:0}
       ,prevPos : { x:-1,y:-1}
       ,speed : 100
@@ -24,7 +25,9 @@ ig.module( 'game.entities.attacker')
         this.addAnim('idle',.5,[1,2]);
         this.addAnim('selected',1,[0]);
         this.addAnim('moving',.2,[1,2,3,4,4,3,2,1]);
-        // Call the parent constructor
+
+        this.fireTimer = new ig.Timer(this.fireRate);
+
         this.parent( x, y, settings );
 
       }
@@ -33,7 +36,8 @@ ig.module( 'game.entities.attacker')
       }
       ,setTarget : function(target){
         this.target = target;
-        this.getPath(this.target.pos.x,this.target.pos.y,true,this.pathEntities,[this.target]);
+        var positions = this.target.getPositions();
+        this.getPath(positions.center.x,positions.center.y,true,this.pathEntities,[this.target]);
       }
       ,update: function() {
         var isValidClick = false;
@@ -42,6 +46,9 @@ ig.module( 'game.entities.attacker')
           isValidClick = !(ig.game.pointerIsOnEntity(ig.game.scoreboard) || ig.game.pointerIsOnEntity(ig.game.hud));
         }
 
+        if(this.target && this.inRange(this.target) && this.target.isShootable){
+          this.fire(this.target);
+        }
         // Don't let the user change the target.
         if(this.target){
           isValidClick = false;
@@ -66,9 +73,13 @@ ig.module( 'game.entities.attacker')
         // If you're stuck recalculate the path.
         if(this.path && this.prevPos.x == this.pos.x && this.prevPos.y == this.pos.y)
         {
-          this.isStuck += 1;
-          var destination = this.path[this.path.length-1];
-          this.calculatePath(destination.x,destination.y);
+          if(this.target && this.isActivating){
+            this.path = null;
+          } else {
+            this.isStuck += 1;
+            var destination = this.path[this.path.length-1];
+            this.calculatePath(destination.x,destination.y);
+          }
         } else {
           this.isStuck = 0;
         }
@@ -95,12 +106,11 @@ ig.module( 'game.entities.attacker')
         }
 
         if(this.target){
-          this.getPath(this.target.pos.x,this.target.pos.y,true,this.pathEntities,[this.target]);
+          var positions = this.target.getPositions();
+          this.getPath(positions.center.x,positions.center.y,true,this.pathEntities,[this.target]);
         } else { // Click to move
           this.getPath(x,y,true,this.pathEntities);
         }
-
-
       }
       ,draw : function(){
         this.drawPath(255, 255, 0, 0.8,1);
@@ -118,6 +128,7 @@ ig.module( 'game.entities.attacker')
       ,check : function(other){
         if(other == this.target && typeof(other.activate) == 'function') {
           this.isActivating = true;
+          this.path = null;
           other.activate(this);
         }
       }

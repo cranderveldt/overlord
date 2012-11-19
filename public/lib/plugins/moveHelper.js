@@ -1,5 +1,5 @@
 ig.module(
-  'plugins.astarUnsticker'
+  'plugins.moveHelper'
 )
   .requires(
   'impact.entity'
@@ -8,6 +8,17 @@ ig.module(
 
     ig.Entity.inject({
       isStuck : 0
+      ,getPositions : function(){
+        var positions = {
+          left : this.pos.x
+          , right : this.pos.x + this.size.x
+          , top : this.pos.y
+          , bottom : this.pos.y + this.size.y
+          , center : {x: (this.pos.x + this.size.x/2), y: (this.pos.y + this.size.y/2) }
+        };
+
+        return positions;
+      }
       ,unstick : function(){
         // Try getting unstuck if it's stuck twice.
         var attempt = this.isStuck - 1;

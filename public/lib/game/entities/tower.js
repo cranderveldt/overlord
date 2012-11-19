@@ -7,7 +7,7 @@ ig.module( 'game.entities.tower')
       // Set some of the properties
       ,collides: ig.Entity.COLLIDES.FIXED
       ,zIndex :100
-      ,size: {x: 8, y: 8}
+      ,size: {x: 16, y: 16}
       ,health: 50
       ,movementspeed : 1
       ,weapon : 'EntityBullet'
@@ -15,6 +15,7 @@ ig.module( 'game.entities.tower')
       ,speed : 100
       ,fireRange : 200
       ,fireRate : 2
+      ,isShootable : true
       ,isSelected : false
       ,moveTarget : null
       ,target : null
@@ -30,32 +31,7 @@ ig.module( 'game.entities.tower')
         this.parent( x, y, settings );
 
       }
-      ,fire : function(target){
-        var positions = this.getPositions();
-
-        var spawn = { x : positions.center.x, y : positions.center.y};
-
-        if(target.pos.x > positions.right){
-          spawn.x = positions.right;
-        }
-
-        if(target.pos.x < positions.left)
-        {
-          spawn.x = positions.left;
-        }
-
-        if(target.pos.y < positions.top){
-          spawn.y = positions.top;
-        }
-
-        if(target.pos.y > positions.bottom){
-          spawn.y = positions.bottom;
-        }
-
-        //ig.game.spawnEntity( this.weapon, spawn.x, spawn.y, { target : target} ); //Nothing to special here, just make sure you pass the angle we calculated in
-      }
       ,update: function() {
-
         if(this.target && this.target._killed){
           this.target = null;
         }
@@ -87,6 +63,21 @@ ig.module( 'game.entities.tower')
         }
 
         this.parent();
+      }
+      ,clicked: function() {
+        if(!this.selected) {// Don't select yourself.
+          // Get a list of all active mobs and set this item as the target.
+          var mobs = ig.game.getEntitiesByType( 'EntityAttacker' );
+
+          for(var i = 0; i < mobs.length; i++)
+          {
+            var mob = mobs[i];
+            if(mob != this && mob.isSelected && typeof(mob.setTarget) == 'function' && mob.target == null){
+              mob.setTarget(this);
+              mob.unselect();
+            }
+          }
+        }
       }
     });
   });

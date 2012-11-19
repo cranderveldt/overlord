@@ -1,6 +1,6 @@
 // Create your own entity, subclassed from ig.Enitity
 ig.module( 'game.entities.mob')
-  .requires('impact.entity','plugins.astar')
+  .requires('impact.entity','plugins.astar','plugins.moveHelper')
   .defines(function(){
     EntityMob = ig.Entity.extend({
       type:  ig.Entity.TYPE.B
@@ -9,17 +9,8 @@ ig.module( 'game.entities.mob')
       ,pathEntities : ['EntityFarm','EntityMob','EntityHud'] // EntityHud isn't working with aStar, maybe because it's so big.
       ,zIndex :10
       ,size: {x: 16, y: 16}
-      ,getPositions : function(){
-        var positions = {
-            left : this.pos.x
-          , right : this.pos.x + this.size.x
-          , top : this.pos.y
-          , bottom : this.pos.y + this.size.y
-          , center : {x: (this.pos.x + this.size.x/2), y: (this.pos.y + this.size.y/2) }
-        };
-
-        return positions;
-      }
+      ,fireRange : 200
+      ,fireRate : 2
       ,clicked: function() {
         if(!this.selected) {// Don't select yourself.
         // Get a list of all active mobs and set this item as the target.
@@ -39,9 +30,39 @@ ig.module( 'game.entities.mob')
         this.isSelected = false;
         this.currentAnim = this.anims.idle;
       }
+      ,fire : function(target){
+        var shoot = false;
+        if(this.fireTimer && this.fireTimer.delta() >= 0){
+          shoot = true;
+          this.fireTimer.reset();
+        }
+
+        if(shoot){
+          var positions = this.getPositions();
+          var spawn = { x : positions.center.x, y : positions.center.y};
+
+          if(target.pos.x > positions.right){
+            spawn.x = positions.right;
+          }
+
+          if(target.pos.x < positions.left)
+          {
+            spawn.x = positions.left;
+          }
+
+          if(target.pos.y < positions.top){
+            spawn.y = positions.top;
+          }
+
+          if(target.pos.y > positions.bottom){
+            spawn.y = positions.bottom;
+          }
+
+          ig.game.spawnEntity( this.weapon, spawn.x, spawn.y, { target : target} ); //Nothing to special here, just make sure you pass the angle we calculated in
+        }
+      }
       // target is a mob.
       ,inRange: function(target) {
-
         // This is to the center. Need to check for size.
         return this.distanceTo(target) <= this.fireRange
       }
